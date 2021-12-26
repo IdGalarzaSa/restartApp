@@ -15,11 +15,11 @@ struct OnboardingView: View {
     
     ZStack {
       Color("ColorBlue")
-        .ignoresSafeArea()
+        .ignoresSafeArea(.all, edges: .all)
       
       VStack(spacing: 20) {
-        Spacer()
         // MARK: - HEADER
+        Spacer()
         VStack(spacing: 0) {
           Text("Share.")
             .font(.system(size: 60))
@@ -39,15 +39,8 @@ struct OnboardingView: View {
         
         // MARK: - CENTER
         ZStack {
-          ZStack {
-            Circle()
-              .stroke( .white.opacity(0.2), lineWidth: 40 )
-              .frame(width: 260, height: 206, alignment: .center)
-            
-            Circle()
-              .stroke( .white.opacity(0.2), lineWidth: 80 )
-              .frame(width: 260, height: 206, alignment: .center)
-          }
+          CircleGroupView(shapeColor: .white, shapeOpacity: 0.2)
+          
           Image("character-1")
             .resizable()
             .scaledToFit()
@@ -111,5 +104,6 @@ struct OnboardingView: View {
 struct OnboardingView_Previews: PreviewProvider {
   static var previews: some View {
     OnboardingView()
+      .previewDevice("iPhone 13")
   }
 }
